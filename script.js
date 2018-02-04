@@ -1,9 +1,9 @@
 window.onload = function () {
-	initShoppingList()
+	initShoppingList();
 };
 
 function initShoppingList() {
-	let form = document.getElementByID("item-form")
+	let form = document.getElementByID("item-form");
 
 	form.addEventListener("submit", (event) => {
 		handleItemForm(event, form);
@@ -15,21 +15,22 @@ function handleItemForm (event, formRef) {
 		event.preventDefault();
 	}
 
-	let itemHtml = addItemToShoppingList();
-	let itemListRef = document.getElementById("shopping-list");
-	itemListRef.insertAdjacentHTML("afterend", itemHtml);
-	return false;
+	addItemToShoppingList();
 
+	return false;
 }
 
 function addItemToShoppingList() {
 	let itemName = document.getElementByID("item-name");
 	let itemAmount = document.getElementByID("item-amount");
+	let itemHtml = createListItemHtml(itemName.value, itemAmount.value);
+	let itemListRef = document.getElementById("shopping-list");
+	itemListRef.insertAdjacentHTML("afterend", itemHtml);
 }
 
-function creatListItemHtml() {
+function createListItemHtml(itemName, itemAmount) {
 	return '<li>
-	Item Name - Amount
-	</li>
-	';
+				${itemName} - ${itemAmount}
+				<button type="button">Delete Item</button>
+ 	</li>';
 }
