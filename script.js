@@ -15,6 +15,21 @@ function handleItemForm (event, formRef) {
 		event.preventDefault();
 	}
 
+	let itemHtml = addItemToShoppingList();
+	let itemListRef = document.getElementById("shopping-list");
+	itemListRef.insertAdjacentHTML("afterend", itemHtml);
 	return false;
 
+}
+
+function addItemToShoppingList() {
+	let itemName = document.getElementByID("item-name");
+	let itemAmount = document.getElementByID("item-amount");
+}
+
+function creatListItemHtml() {
+	return '<li>
+	Item Name - Amount
+	</li>
+	';
 }
